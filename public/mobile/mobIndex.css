@@ -1,0 +1,58 @@
+@media screen and (max-width: 500px) {
+
+   .wrapper {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+   }
+   
+   .container {
+      display: flex;
+      flex-direction: column;
+   }
+
+   .design {
+      order: 2;
+   }
+
+   .dot {
+      top: 29%;
+      left: 20%;
+   }
+
+   .design div {
+      min-width: 80%;
+      left: 50%;
+   }
+
+   .design img {
+      width: 70%;
+   }
+
+   .sign-up {
+      margin: auto;
+      padding: 2rem 0;
+   }
+
+   .data {
+      padding-right: 80px;
+   }
+
+   .btn {
+      padding: 8px 20px;
+      font-size: 14px;
+   }
+
+   .btn:hover {
+      background-position: 350px 0;
+   }
+
+   .google-btn {
+      padding: 5px 0;
+   }
+
+   .google-btn img {
+      margin-bottom: 5px;
+   }
+}

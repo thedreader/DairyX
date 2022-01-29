@@ -1,0 +1,29 @@
+@media screen and (max-width: 500px) {
+   .logo img {
+      width: 35px;
+   }
+
+   .sign-in h1 {
+      font-size: 1.6rem;
+   }
+   
+   .sign-in h2 {
+      font-size: 1rem;
+   }
+
+   .sign-in {
+      padding: 20px;
+      border-radius: 15px;
+   }
+
+   .data {
+      padding: 1.4rem;
+      padding-right: 80px;
+      padding-left: 2rem;
+   }
+
+   .btn {
+      font-size: 13px;
+      padding: 9px 20px;
+   }
+}

@@ -1,0 +1,90 @@
+<%- include("common/header") -%>
+
+<link rel="stylesheet" href="/styleCompose.css">
+<link rel="stylesheet" href="/mobile/mobCompose.css">
+
+
+   <a href="/dairy">
+      <box-icon name='arrow-back' color='#FFFFFF' class="back-arrow" size='md'></box-icon>
+   </a>
+   <div class="container">
+      <div class="compose">
+
+         <h2 id="type"><%=post %> Entry</h2>
+
+         <form action="/<%=route %>" method="post">
+            <input type="text" id="colorTransfer" style="display: none;" value="" name="colour">
+            <fieldset id="header-colors">
+               <div class="col1" onclick="headerColor('7b113a', ['b','c','d','e','f'], 'a');"><i
+                     class='bx bx-check bx-md toggle a' style='color:#515556;'></i></div>
+               <div class="col2" onclick="headerColor('3FEEE6', ['a','c','d','e','f'], 'b');"><i
+                     class='bx bx-check bx-md b' style='color:#515556'></i></div>
+               <div class="col3" onclick="headerColor('f0c929', ['a','b','d','e','f'], 'c');"><i
+                     class='bx bx-check bx-md toggle c' style='color:#515556'></i></div>
+               <div class="col4" onclick="headerColor('34656d', ['a','b','c','e','f'], 'd');"><i
+                     class='bx bx-check bx-md toggle d' style='color:#515556'></i></div>
+               <div class="col5" onclick="headerColor('e9a6a6', ['a','b','c','d','f'], 'e');"><i
+                     class='bx bx-check bx-md toggle e' style='color:#515556'></i></div>
+               <div class="col6" onclick="headerColor('ec407a', ['a','b','c','d','e'], 'f');"><i
+                     class='bx bx-check bx-md toggle f' style='color:#515556'></i></div>
+            </fieldset>
+
+            <label for="">
+               <box-icon name='calendar'></box-icon>Date
+            </label>
+            <input type="date" name="date" id="date" value="">
+
+            <label for="">
+               <box-icon name='pencil'></box-icon>Entry
+            </label>
+            <textarea name="content" id="" rows="10" cols="30" placeholder="Write here..."><%=content %></textarea>
+
+            <button type="submit" class="btn" onClick="check()">Submit
+               <span></span><span></span><span></span><span></span>
+            </button>
+         </form>
+
+      </div>
+   </div>
+
+   <%- include("common/footer") -%>
+
+</body>
+
+<script>
+   function check() {
+      if (document.getElementById("type").innerHTML == "New Entry") {
+         const a = document.getElementById("date");
+
+         if (a.value == "") {
+            alert("Enter a date");
+         }
+      }
+   }
+
+   function headerColor(colorCode, name, curName) {
+      console.log(colorCode)
+      let cur = document.querySelector("." + curName)
+      cur.style.display = "block";
+
+      name.forEach(ele => {
+         let element = document.querySelector("." + ele)
+         element.style.display = "none";
+      });
+
+      document.getElementById("colorTransfer").value = '#' + colorCode;
+   }
+
+   let imgNo = Math.floor(Math.random() * 4);
+   document.getElementsByTagName("body")[0].style.backgroundImage = "url('/assets/pattern" + imgNo + ".svg')";
+</script>
+
+<script>
+   var pre = document.getElementById('abc');
+
+   function myFunc() {
+     pre.style.display = 'none';
+   }
+</script>
+
+</html>

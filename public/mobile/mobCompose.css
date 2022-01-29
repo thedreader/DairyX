@@ -1,0 +1,40 @@
+@media screen and (max-width: 500px) {
+   body {
+      background-repeat: no-repeat;
+      background-size: cover;
+   }
+
+   .container {
+      padding: 2.5rem;
+   }
+
+   .container h2 {
+      margin-top: 15px;
+      font-size: 2rem;
+   }
+
+   .compose label {
+      font-size: 13px;
+   }
+
+   ::placeholder {
+      font-size: 13px;
+   }
+
+   .btn {
+      padding: 10px 30px;
+      font-size: 11px;
+   }
+
+   .compose #header-colors {
+      position: absolute;
+      top: -3.4rem;
+      left: 50%;
+      transform: translateX(-50%);
+   }
+   
+   .compose #header-colors > * {
+      min-height: 35px;
+      min-width: 35px;
+   }
+}

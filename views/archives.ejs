@@ -1,0 +1,64 @@
+<%- include("common/header") -%>
+
+<link rel="stylesheet" href="styleDairy.css">
+<link rel="stylesheet" href="mobile/mobDairy.css">
+
+<style>
+   h1 {
+      font-family: 'Source Sans 3', sans-serif;
+      margin-top: 40px;
+      text-align: center;
+      color: beige;
+      font-size: 3rem;
+      letter-spacing: 2px;
+      word-spacing: 10px;
+   }
+
+   .back-arrow {
+      margin: 20px 0 0 20px;
+      width: max-content;
+   }
+</style>
+
+
+   <a href="/dairy"><box-icon name='arrow-back' color='#f5f5dc' class="back-arrow" size='md'></box-icon></a>
+   <h1>Archived Entries</h1>
+   <div class="container2">
+      <% const arr= archivedUserContent
+         arr.map(a=>a).reverse().map(myFunction) %> 
+      <% function myFunction(num) { %>
+         <div class="content" style="border-top-color: <%=num.headerColor %>;">
+            <h2>
+               <%=num.date %>
+               <div>
+                  <a href="/unarchived/<%=num.entryId %>"><box-icon name='archive-out' class='archive'></box-icon></a>
+                  <a href="/delete/<%=num.entryId %>"><box-icon name='trash' class='trash'></box-icon></a>
+               </div>
+            </h2>
+            <% if(num.content.length > 29) {%>
+               <p><%=num.content.substring(0, 30) %>...</p>
+            <% } %>
+   
+            <%if(num.content.length <= 29) {%>
+               <p><%=num.content%></p>
+            <% } %>
+
+            <a href="/entry/<%=num.entryId %> " class="read-more">
+               <box-icon name='right-arrow' type='solid' color='#FFF01F' size='xs'></box-icon>Read more
+            </a>
+         </div>
+      <% } %> 
+   </div>
+
+   <%- include("common/footer") -%>
+</body>
+
+<script>
+   var pre = document.getElementById('abc');
+
+   function myFunc() {
+     pre.style.display = 'none';
+   }
+</script>
+
+</html>

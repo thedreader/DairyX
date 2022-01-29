@@ -1,0 +1,63 @@
+<%- include("common/header") -%>
+
+<link rel="stylesheet" href="styleIndex.css">
+<link rel="stylesheet" href="mobile/mobIndex.css">
+
+   <div class="container">
+      <div class="design">
+         <div></div>
+         <span class="dot"></span>
+         <img src="assets/logo_ccexpress.webp" alt="" onContextMenu="return false;">
+         <%- include("common/footer") -%>
+      </div>
+
+      <div class="sign-up">
+         <div class="intro">
+            <h1>Diary X</h1>
+            <p>Your Personal Diary.</p>
+         </div>
+
+         <div class="info">
+            <a href="/auth/google" class="btn google-btn slide_right">
+               <img width="20px" style="margin-top:7px; margin-right:8px" alt="Google sign-in"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+               <p class="">Sign up with google</p>
+            </a>
+
+            <h2>OR</h2>
+
+            <form action="/" method="post" autocomplete="off">
+               <input type="text" name="name" id="" placeholder="Name" class="data name" required autofocus>
+               <!-- <input type="text" name="lastName" id="" placeholder="Last Name" class="data lastName" required> -->
+               <input type="email" name="username" id="" placeholder="Email" class="data email" required>
+               <input type="password" name="password" id="" placeholder="Password" class="data password" required>
+               <button type="submit" class="btn slide_right">Sign Up
+               </button>
+            </form>
+
+         </div>
+
+         <div class="sign-in">
+            <p>Already have an account?</p>
+            <a href="/login"><button class="btn slide_right">Sign In
+               </button></a>
+         </div>
+
+
+
+      </div>
+
+   </div>
+
+
+</body>
+
+<script>
+   var pre = document.getElementById('abc');
+
+   function myFunc() {
+     pre.style.display = 'none';
+   }
+ </script>
+
+</html>

@@ -1,0 +1,65 @@
+<%- include("common/header") -%>
+
+<link rel="stylesheet" href="styleLogin.css">
+<link rel="stylesheet" href="mobile/mobLogin.css">
+
+<style>
+   .wrapper {
+   position: absolute;
+   bottom: 0;
+   left: 50%;
+   transform: translateX(-50%);
+}
+</style>
+
+
+   <div class="container">
+
+      <div class="logo">
+         <img src="assets/logo_ccexpress.webp" alt="" onContextMenu="return false;">
+      </div>
+
+      <div class="sign-in">
+         <h1>Sign in to Dairy X</h1>
+
+         <a href="/auth/google" class="btn google-btn">
+            <img width="20px" style="margin-top:7px; margin-right:8px" alt="Google sign-in"
+               src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+            <p class="">Sign in with Google</p>
+         </a>
+
+         <h2>OR</h2>
+
+         <form action="/login" method="post" autocomplete="off">
+            <div class="mail-container">
+               <box-icon type='solid' name='envelope' size='20px' color='#252525'></box-icon>
+               <input type="email" name="username" id="" placeholder="Email" class="data email" required autofocus>
+            </div>
+            <div class="password-container">
+               <box-icon type='solid' name='lock-alt' class="lock" size='20px' color='#252525'></box-icon>
+               <input type="password" name="password" id="" placeholder="Password" class="data password" required>
+            </div>
+            <button type="submit" class="btn">Sign In</button>
+            <p style="color: rgb(189, 50, 50);"><%=message %></p>
+         </form>
+
+         <div class="sign-up">
+            <p>Don't have an account?</p>
+            <a href="/"><button class="btn">Sign Up</button></a>
+         </div>
+
+      </div>
+      <%- include("common/footer") -%>
+   </div>
+</body>
+
+<script>
+   var pre = document.getElementById('abc');
+
+   function myFunc() {
+     pre.style.display = 'none';
+   }
+ </script>
+
+
+</html>

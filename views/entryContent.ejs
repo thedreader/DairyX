@@ -1,0 +1,88 @@
+<%- include("common/header") -%>
+
+<link rel="stylesheet" href="/styleCompose.css">
+<link rel="stylesheet" href="/mobile/mobCompose.css">
+
+
+<style>
+   .container {
+      height: 75vh;
+      padding: 2.5rem 1.5rem;
+   }
+
+   .btnn {
+      text-decoration: none;
+      position: absolute;
+      bottom: 30px;
+      left: 4rem;
+   }
+
+   label {
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 15px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+   }
+
+   .btn {
+      border-bottom: 0;
+      cursor: pointer;
+   }
+
+   textarea {
+      width: 100%;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      border-color: #26bfb7;
+      box-shadow: 0 0 15px #26bfb7;
+   }
+
+   @media screen and (max-width: 500px) {
+      .container h2 {
+         font-size: 1.7rem;
+      }
+
+      label {
+         font-size: 13px;
+      }
+
+      .btnn {
+         left: 15%;
+      }
+   }
+</style>
+
+
+   <a href="/dairy">
+      <box-icon name='arrow-back' color='#FFFFFF' class="back-arrow" size='md'></box-icon>
+   </a>
+   <div class="container">
+      <label for="">
+         <box-icon name='calendar'></box-icon>Date
+      </label>
+      <h2><%=date %></h2>
+      <label for="">
+         <box-icon type='solid' name='book-open'></box-icon>Entry Content
+      </label>
+      <textarea name="" id="" cols="30" rows="12" readonly><%=content %></textarea>
+      <a href="/update/<%=entryId %>" class="btnn">
+         <button class="btn">Edit
+            <span></span><span></span><span></span><span></span>
+         </button>
+      </a>
+   </div>
+
+   <%- include("common/footer") -%>
+
+</body>
+
+<script>
+   var pre = document.getElementById('abc');
+
+   function myFunc() {
+     pre.style.display = 'none';
+   }
+ </script>
+
+</html>

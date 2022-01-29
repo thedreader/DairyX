@@ -1,0 +1,68 @@
+@media screen and (max-width: 500px) {
+
+   .logo img {
+      width: 40px;
+   }
+
+   .top-container {
+      top: 40%;
+      font-size: 1.2rem;
+   }
+
+   .top-container p {
+      font-size: 0.9rem;
+   }
+
+   .second-container {
+      top: 20%;
+      font-size: 13px;
+      flex-direction: column;
+   }
+   .second-container h2, h3 {
+      font-size: 1rem;
+   }
+
+   .second-container .quote {
+      position: relative;
+      left: 7%;
+      text-align: left;
+      height: max-content;
+      width: 80%;
+   }
+   
+   .second-container .info {
+      position: relative;
+      text-align: right;
+      margin-right: 20px;
+      height: max-content;
+   }
+   
+   .second-container .temp {
+      position: absolute;
+      right: 0;
+      display: flex;
+      align-items: center;
+   }
+   
+   .second-container .temp img {
+      width: 50px;
+   }
+
+   .btn {
+      font-size: 12px;
+      padding: 10px 20px;
+   }
+
+   .container2 {
+      grid-template-columns: 1fr;
+   }
+
+   .content {
+      grid-template-rows: 1fr 1fr 0.5fr;
+      width: 65%;
+   }
+   .content h2 {
+      font-size: 1.2rem;
+   }
+
+}
