@@ -14,7 +14,9 @@ const {
 } = require('./crypto');
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const { header } = require('express/lib/response');
+const {
+   header
+} = require('express/lib/response');
 
 let displayName = "";
 let userEmail = "";
@@ -82,6 +84,10 @@ app.use(express.urlencoded({
 
 app.use(
    session({
+      cookie: {
+         secure: true,
+      },
+      store: new RedisStore(),
       secret: process.env.SECRET,
       resave: false,
       saveUninitialized: false,
@@ -202,6 +208,8 @@ app.get("/login", function (req, res) {
    res.render("login", {
       message: message
    });
+
+   message
 })
 
 app.get('/auth/google',
@@ -453,10 +461,10 @@ app.get('/unarchived/:entryId', function (req, res) {
 
 app.post('/compose', function (req, res) {
    const date = req.body.date
-   let headerColor= req.body.colour
+   let headerColor = req.body.colour
 
-   if(headerColor == ''){
-      headerColor= "#3FEEE6"
+   if (headerColor == '') {
+      headerColor = "#3FEEE6"
    }
 
    if (date == "") {
@@ -569,9 +577,9 @@ app.get('/logout', function (req, res) {
 
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 3000;
+   port = 3000;
 }
 
-app.listen(port, function() {
-  console.log("Server started on port 3000");
+app.listen(port, function () {
+   console.log("Server started on port 3000");
 });
