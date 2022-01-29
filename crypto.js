@@ -1,7 +1,8 @@
+require('dotenv').config()
 const crypto = require('crypto');
 
-const algorithm = 'aes-256-ctr';
-const secretKey = 'vOVH6sdmpNWjRRIqCc7rdxs01lwHzfr3';
+const algorithm = process.env.ALGO;
+const secretKey = process.env.SECRET_KEY;
 const iv = crypto.randomBytes(16);
 
 const encrypt = (text) => {
