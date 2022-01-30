@@ -150,6 +150,8 @@ passport.use(new GoogleStrategy({
 
 
       setTimeout(() => {
+         console.log(userExist);
+         console.log(userExistGoogle);
 
          if (userExist != null && userExistGoogle == null) {
             message = "A user already exists with this email. Sign in via normal method"
