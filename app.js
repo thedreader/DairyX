@@ -5,6 +5,7 @@ const https = require("https");
 
 const redis = require('redis')
 const session = require("express-session");
+const MongoStore = require('connect-mongo');
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const findOrCreate = require('mongoose-findorcreate')
@@ -88,7 +89,7 @@ app.use(express.urlencoded({
 
 app.use(
    session({
-      store: new RedisStore({ client: redisClient }),
+      store: MongoStore.create({ mongoUrl: 'mongodb://localhost/test-app' }),
       secret: process.env.SECRET,
       resave: false,
       saveUninitialized: false,
