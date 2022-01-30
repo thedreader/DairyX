@@ -11,7 +11,8 @@
 <body>
 	<script>
 		// api url
-		const api_url = "https://extreme-ip-lookup.com/json/?key=" + "<%=abc %>" 
+		const api_url = "https://extreme-ip-lookup.com/json/?key=" + "<%=city %>"
+		let city = ""
 
 
 		// Defining async function
@@ -23,10 +24,27 @@
 			// Storing data in form of JSON
 			var data = await response.json();
 			console.log(data.city);
+			city = data.city;
+			const api_url2 = "https://api.openweathermap.org/data/2.5/weather?q=" + city +
+				"&units=metric&appid=" + "<%=weather %>"
+
+			getapiWeather(api_url2);
+
 			// show(data);
 		}
 		// Calling that async function
 		getapi(api_url);
+
+		async function getapiWeather(url) {
+
+			// Storing response
+			const response = await fetch(url);
+
+			// Storing data in form of JSON
+			var data = await response.json();
+			console.log(data.main.temp);
+			// show(data);
+		}
 	</script>
 </body>
 

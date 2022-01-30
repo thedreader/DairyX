@@ -27,7 +27,7 @@ let message = "";
 let userExist = "";
 let userExistGoogle = "";
 let userGoogleId = "";
-let cityName = "";
+// let cityName = "";
 
 let usersInfo = [];
 
@@ -95,7 +95,9 @@ app.use(
       secret: process.env.SECRET,
       resave: false,
       saveUninitialized: false,
-      store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL }),
+      store: MongoStore.create({
+         mongoUrl: process.env.DATABASE_URL
+      }),
    })
 );
 
@@ -192,9 +194,8 @@ app.get("/", function (req, res) {
    //    })
    // })
 
-   const key_location= process.env.API_KEY_LOCATION
 
-   res.render("index", {abc: key_location});
+   res.render("index");
 })
 
 app.get("/login", function (req, res) {
@@ -213,7 +214,7 @@ app.get("/login", function (req, res) {
       message: message
    });
 
-   message= ""
+   message = ""
 })
 
 app.get('/auth/google',
@@ -250,6 +251,9 @@ app.get('/auth/google/dairy',
 
 app.get('/dairy', function (req, res) {
    if (req.isAuthenticated()) {
+      const key_location = process.env.API_KEY_LOCATION
+      const key_weather= process.env.API_KEY_WEATHER
+
       let userContent = [];
 
       if (displayName == "") {
@@ -283,8 +287,8 @@ app.get('/dairy', function (req, res) {
 
       let quote = "";
       let author = "";
-      let temp = "";
-      let iconUrl = "";
+      // let temp = "";
+      // let iconUrl = "";
 
       https.get(quoteUrl, function (response) {
          console.log(response.statusCode);
@@ -296,20 +300,20 @@ app.get('/dairy', function (req, res) {
          })
       })
 
-      const url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=metric&appid=" + process.env.API_KEY_WEATHER
+      // const url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=metric&appid=" + process.env.API_KEY_WEATHER
 
-      https.get(url, function (response) {
-         console.log(response.statusCode);
+      // https.get(url, function (response) {
+      //    console.log(response.statusCode);
 
-         response.on("data", function (data) {
-            const weatherData = JSON.parse(data)
+      //    response.on("data", function (data) {
+      //       const weatherData = JSON.parse(data)
 
-            temp = weatherData.main.temp
-            const icon = weatherData.weather[0].icon
-            iconUrl = "http://openweathermap.org/img/wn/" + icon + "@2x.png"
+      //       temp = weatherData.main.temp
+      //       const icon = weatherData.weather[0].icon
+      //       iconUrl = "http://openweathermap.org/img/wn/" + icon + "@2x.png"
 
-         })
-      })
+      //    })
+      // })
 
       setTimeout(() => {
          res.render("dairy", {
@@ -317,9 +321,10 @@ app.get('/dairy', function (req, res) {
             dairyContent: userContent,
             quote: quote,
             author: author,
-            cityName: cityName,
-            temp: temp,
-            iconUrl: iconUrl
+            // temp: temp,
+            // iconUrl: iconUrl,
+            city: key_location,
+            weather: key_weather
          })
       }, 2000);
 
