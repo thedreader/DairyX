@@ -51,7 +51,7 @@ function gettingUserContent(email) {
 }
 
 function checkUser(username) {
-   User.findOne({
+   User.find({
       username: username
    }, function (err, foundUser) {
       if (foundUser) {
@@ -59,12 +59,12 @@ function checkUser(username) {
       } else {
          userExist = null
       }
-   })
+   }).limit(1)
 
 }
 
 function checkUserGoogle(googleId) {
-   User.findOne({
+   User.find({
       googleId: googleId
    }, function (err, foundUser) {
       if (foundUser) {
@@ -72,7 +72,7 @@ function checkUserGoogle(googleId) {
       } else {
          userExistGoogle = null
       }
-   })
+   }).limit(1)
 
 }
 
@@ -208,7 +208,7 @@ app.get("/login", function (req, res) {
       message: message
    });
 
-   // message
+   message= ""
 })
 
 app.get('/auth/google',
