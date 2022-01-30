@@ -88,7 +88,7 @@ app.use(express.urlencoded({
 
 app.use(
    session({
-      store: new RedisStore({ client: redisClient }),
+      store: new RedisStore(),
       secret: process.env.SECRET,
       resave: false,
       saveUninitialized: false,
@@ -210,7 +210,7 @@ app.get("/login", function (req, res) {
       message: message
    });
 
-   message
+   // message
 })
 
 app.get('/auth/google',
@@ -224,29 +224,24 @@ app.get('/auth/google/dairy',
       failureRedirect: '/login'
    }),
    function (req, res) {
-      let prevSession = req.session;
-      req.session.regenerate((err) => {
-         Object.assign(req.session, prevSession);
-         if (userExist != null && userExistGoogle == null) {
-            User.deleteOne({
-               googleId: userGoogleId
-            }, function (err, result) {
-               res.redirect('/login')
-            })
-         }
-         // Successful authentication, redirect home.
-         else {
-            findingUsers();
+      if (userExist != null && userExistGoogle == null) {
+         User.deleteOne({
+            googleId: userGoogleId
+         }, function (err, result) {
+            res.redirect('/login')
+         })
+      }
+      // Successful authentication, redirect home.
+      else {
+         findingUsers();
+         setTimeout(() => {
+            new mongoose.model(usersInfo[usersInfo.length - 1].id + "5", dairySchema);
+            gettingUserContent(userEmail)
             setTimeout(() => {
-               new mongoose.model(usersInfo[usersInfo.length - 1].id + "5", dairySchema);
-               gettingUserContent(userEmail)
-               setTimeout(() => {
-                  res.redirect('/dairy')
-               }, 1000)
-            }, 2000);
-         }
-      });
-
+               res.redirect('/dairy')
+            }, 1000)
+         }, 2000);
+      }
    }
 );
 
@@ -524,15 +519,11 @@ app.post("/", function (req, res) {
                res.redirect("/");
             } else {
                passport.authenticate("local")(req, res, function () {
-                  let prevSession = req.session;
-                  req.session.regenerate((err) => {
-                     findingUsers();
-                     Object.assign(req.session, prevSession);
-                     setTimeout(() => {
-                        new mongoose.model(usersInfo[usersInfo.length - 1].id + "5", dairySchema);
-                        res.redirect('/login')
-                     }, 2000);
-                  });
+                  findingUsers();
+                  setTimeout(() => {
+                     new mongoose.model(usersInfo[usersInfo.length - 1].id + "5", dairySchema);
+                     res.redirect('/login')
+                  }, 2000);
                });
             }
          });
@@ -556,14 +547,10 @@ app.post("/login", function (req, res) {
          res.redirect('/login')
       } else {
          passport.authenticate("local")(req, res, function () {
-            let prevSession = req.session;
-            req.session.regenerate((err) => {
-               gettingUserContent(username);
-               Object.assign(req.session, prevSession);
-               setTimeout(() => {
-                  res.redirect('/dairy')
-               }, 1000)
-            });
+            gettingUserContent(username);
+            setTimeout(() => {
+               res.redirect('/dairy')
+            }, 1000)
          })
       }
    })
