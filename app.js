@@ -504,7 +504,8 @@ app.post("/", function (req, res) {
    checkUser(username)
 
    setTimeout(() => {
-      if (userExist != null) {
+      console.log(userExist)
+      if (userExist != "") {
          message = "A user already exists with this email."
          res.redirect('/login')
       } else {
