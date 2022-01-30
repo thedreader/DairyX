@@ -82,7 +82,7 @@
 </body>
 
 <script>
-   const d = new Date();
+   const d1 = new Date();
 
    const weekday = new Array(7);
    weekday[0] = "Sunday";
@@ -93,7 +93,7 @@
    weekday[5] = "Friday";
    weekday[6] = "Saturday";
 
-   let day = weekday[d.getDay()];
+   let day = weekday[d1.getDay()];
 
    document.getElementById("date").textContent = 'Its ' + day
 
@@ -101,6 +101,8 @@
    document.getElementById("c").style.backgroundImage = "url('assets/dairyImg" + imgNo + ".webp')";
 
    setInterval(() => {
+      const d = new Date();
+
       let hours = d.getHours();
       let minutes = d.getMinutes();
 
