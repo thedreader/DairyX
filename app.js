@@ -211,7 +211,7 @@ app.get("/login", function (req, res) {
       message: message
    });
 
-   // message= ""
+   message= ""
 })
 
 app.get('/auth/google',
