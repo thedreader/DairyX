@@ -57,9 +57,9 @@ function checkUser(username) {
       if (foundUser) {
          userExist = foundUser.id
       } else {
-         userExist = null
+         userExist = ""
       }
-   }).limit(1)
+   })
 
 }
 
@@ -70,9 +70,9 @@ function checkUserGoogle(googleId) {
       if (foundUser) {
          userExistGoogle = foundUser.id
       } else {
-         userExistGoogle = null
+         userExistGoogle = ""
       }
-   }).limit(1)
+   })
 
 }
 
@@ -164,6 +164,7 @@ passport.use(new GoogleStrategy({
             });
          }
          if (userExist == userExistGoogle) {
+            message = ""
             User.findOrCreate({
                googleId: userGoogleId,
                name: profile.displayName,
@@ -172,7 +173,7 @@ passport.use(new GoogleStrategy({
                return cb(err, user);
             });
          }
-      }, 500);
+      }, 1000);
 
    }
 ));
@@ -210,7 +211,7 @@ app.get("/login", function (req, res) {
       message: message
    });
 
-   message= ""
+   // message= ""
 })
 
 app.get('/auth/google',
@@ -528,7 +529,7 @@ app.post("/", function (req, res) {
             }
          });
       }
-   }, 500);
+   }, 1000);
 
 
 });
