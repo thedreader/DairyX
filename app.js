@@ -3,7 +3,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const https = require("https");
 
-const session = require("cookie-session");
+const redis = require('redis')
+const session = require("express-session");
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const findOrCreate = require('mongoose-findorcreate')
@@ -17,6 +18,9 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const {
    header
 } = require('express/lib/response');
+
+let RedisStore = require('connect-redis')(session)
+let redisClient = redis.createClient()
 
 let displayName = "";
 let userEmail = "";
@@ -84,6 +88,7 @@ app.use(express.urlencoded({
 
 app.use(
    session({
+      store: new RedisStore({ client: redisClient }),
       secret: process.env.SECRET,
       resave: false,
       saveUninitialized: false,
