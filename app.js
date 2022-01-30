@@ -87,23 +87,23 @@ app.use(express.urlencoded({
    extended: true
 }));
 
-app.use(
-   session({
-      store: MongoStore.create({ mongoUrl: 'mongodb://localhost/test-app' }),
-      secret: process.env.SECRET,
-      resave: false,
-      saveUninitialized: false,
-   })
-);
-
-app.use(passport.initialize());
-app.use(passport.session());
-
 mongoose.connect(
    process.env.DATABASE_URL, {
       useNewUrlParser: true
    }
 );
+
+app.use(
+   session({
+      secret: process.env.SECRET,
+      resave: false,
+      saveUninitialized: false,
+      store: MongoStore.create({ mongoUrl: mongoose.connection }),
+   })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 const userSchema = new mongoose.Schema({
    username: String,
