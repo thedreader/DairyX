@@ -10,18 +10,14 @@
 
 <body>
 	<script>
-		// api url
+
 		const api_url = "https://extreme-ip-lookup.com/json/?key=" + "<%=city %>"
 		let city = ""
 
-
-		// Defining async function
 		async function getapi(url) {
 
-			// Storing response
 			const response = await fetch(url);
 
-			// Storing data in form of JSON
 			var data = await response.json();
 			console.log(data.city);
 			city = data.city;
@@ -31,23 +27,19 @@
 			getapiWeather(api_url2);
 
 			document.getElementById("cityName").textContent = city
-			// show(data);
 		}
-		// Calling that async function
+
 		getapi(api_url);
 
 		async function getapiWeather(url) {
 
-			// Storing response
 			const response = await fetch(url);
 
-			// Storing data in form of JSON
 			var data = await response.json();
-			console.log(data.main.temp);
 
-			document.getElementById("temperature").textContent = data.main.temp
+			document.getElementById("temperature").textContent = data.main.temp + " °C";
 			document.getElementById("weatherImage").src = "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
-			// show(data);
+
 		}
 	</script>
 </body>

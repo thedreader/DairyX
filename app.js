@@ -27,7 +27,6 @@ let message = "";
 let userExist = "";
 let userExistGoogle = "";
 let userGoogleId = "";
-// let cityName = "";
 
 let usersInfo = [];
 
@@ -183,32 +182,11 @@ passport.use(new GoogleStrategy({
 
 
 app.get("/", function (req, res) {
-   // const cityUrl = "https://extreme-ip-lookup.com/json/?key=" + process.env.API_KEY_LOCATION
-
-   // https.get(cityUrl, function (response) {
-   //    console.log(response.statusCode);
-
-   //    response.on('data', function (data) {
-   //       const cityData = JSON.parse(data);
-   //       cityName = cityData.city
-   //    })
-   // })
-
 
    res.render("index");
 })
 
 app.get("/login", function (req, res) {
-   // const cityUrl = "https://extreme-ip-lookup.com/json/?key=" + process.env.API_KEY_LOCATION
-
-   // https.get(cityUrl, function (response) {
-   //    console.log(response.statusCode);
-
-   //    response.on('data', function (data) {
-   //       const cityData = JSON.parse(data);
-   //       cityName = cityData.city
-   //    })
-   // })
 
    res.render("login", {
       message: message
@@ -252,7 +230,7 @@ app.get('/auth/google/dairy',
 app.get('/dairy', function (req, res) {
    if (req.isAuthenticated()) {
       const key_location = process.env.API_KEY_LOCATION
-      const key_weather= process.env.API_KEY_WEATHER
+      const key_weather = process.env.API_KEY_WEATHER
 
       let userContent = [];
 
@@ -287,8 +265,6 @@ app.get('/dairy', function (req, res) {
 
       let quote = "";
       let author = "";
-      // let temp = "";
-      // let iconUrl = "";
 
       https.get(quoteUrl, function (response) {
          console.log(response.statusCode);
@@ -300,29 +276,12 @@ app.get('/dairy', function (req, res) {
          })
       })
 
-      // const url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=metric&appid=" + process.env.API_KEY_WEATHER
-
-      // https.get(url, function (response) {
-      //    console.log(response.statusCode);
-
-      //    response.on("data", function (data) {
-      //       const weatherData = JSON.parse(data)
-
-      //       temp = weatherData.main.temp
-      //       const icon = weatherData.weather[0].icon
-      //       iconUrl = "http://openweathermap.org/img/wn/" + icon + "@2x.png"
-
-      //    })
-      // })
-
       setTimeout(() => {
          res.render("dairy", {
             name: displayName,
             dairyContent: userContent,
             quote: quote,
             author: author,
-            // temp: temp,
-            // iconUrl: iconUrl,
             city: key_location,
             weather: key_weather
          })
@@ -579,5 +538,5 @@ if (port == null || port == "") {
 }
 
 app.listen(port, function () {
-   console.log("Server started on port 3000");
+   console.log("Server started on port " + port);
 });
