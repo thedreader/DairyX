@@ -3,7 +3,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const https = require("https");
 
-const redis = require('redis')
 const session = require("express-session");
 const MongoStore = require('connect-mongo');
 const passport = require("passport");
@@ -20,8 +19,6 @@ const {
    header
 } = require('express/lib/response');
 
-let RedisStore = require('connect-redis')(session)
-let redisClient = redis.createClient()
 
 let displayName = "";
 let userEmail = "";

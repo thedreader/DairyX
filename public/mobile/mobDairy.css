@@ -9,6 +9,10 @@
       font-size: 1.2rem;
    }
 
+   .top-container h1 {
+      width: min-content;
+   }
+
    .top-container p {
       font-size: 0.9rem;
    }
