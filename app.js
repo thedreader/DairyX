@@ -98,7 +98,7 @@ app.use(
       secret: process.env.SECRET,
       resave: false,
       saveUninitialized: false,
-      store: MongoStore.create({ mongoUrl: mongoose.connection }),
+      store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL }),
    })
 );
 
