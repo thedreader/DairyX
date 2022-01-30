@@ -1,5 +1,5 @@
 <%- include("common/header") -%>
-<%- include("api") -%> 
+<%- include("api") -%>
 
 <link rel="stylesheet" href="styleDairy.css">
 <link rel="stylesheet" href="mobile/mobDairy.css">
@@ -27,10 +27,10 @@
       <div class="info">
          <h2 id="date"></h2>
          <h3 id="time"></h3>
+         <p id="cityName"></p>
          <div class="temp">
-            
-            <h3>25 °C</h3>
-               <img src="http://openweathermap.org/img/wn/03n@2x.png" alt="">
+            <h3 id="temperature">25 °C</h3>
+            <img id="weatherImage" src="" alt="">
          </div>
       </div>
    </div>
@@ -86,7 +86,7 @@
 
    const weekday = new Array(7);
    weekday[0] = "Sunday";
-   weekday[1] = "monday";
+   weekday[1] = "Monday";
    weekday[2] = "Tuesday";
    weekday[3] = "Wednesday";
    weekday[4] = "Thursday";
@@ -114,7 +114,6 @@
       document.getElementById("time").textContent = hours + " : " + minutes;
 
    }, 1000);
-
 </script>
 
 <script>
