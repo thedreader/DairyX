@@ -536,6 +536,7 @@ app.post("/", function (req, res) {
 });
 
 app.post("/login", function (req, res) {
+   message = ""
    var username = req.body.username
 
    const user = new User({
