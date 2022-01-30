@@ -181,31 +181,33 @@ passport.use(new GoogleStrategy({
 
 
 app.get("/", function (req, res) {
-   const cityUrl = "https://extreme-ip-lookup.com/json/?key=" + process.env.API_KEY_LOCATION
+   // const cityUrl = "https://extreme-ip-lookup.com/json/?key=" + process.env.API_KEY_LOCATION
 
-   https.get(cityUrl, function (response) {
-      console.log(response.statusCode);
+   // https.get(cityUrl, function (response) {
+   //    console.log(response.statusCode);
 
-      response.on('data', function (data) {
-         const cityData = JSON.parse(data);
-         cityName = cityData.city
-      })
-   })
+   //    response.on('data', function (data) {
+   //       const cityData = JSON.parse(data);
+   //       cityName = cityData.city
+   //    })
+   // })
 
-   res.render("index");
+   const key_location= process.env.API_KEY_LOCATION
+
+   res.render("index", {abc: key_location});
 })
 
 app.get("/login", function (req, res) {
-   const cityUrl = "https://extreme-ip-lookup.com/json/?key=" + process.env.API_KEY_LOCATION
+   // const cityUrl = "https://extreme-ip-lookup.com/json/?key=" + process.env.API_KEY_LOCATION
 
-   https.get(cityUrl, function (response) {
-      console.log(response.statusCode);
+   // https.get(cityUrl, function (response) {
+   //    console.log(response.statusCode);
 
-      response.on('data', function (data) {
-         const cityData = JSON.parse(data);
-         cityName = cityData.city
-      })
-   })
+   //    response.on('data', function (data) {
+   //       const cityData = JSON.parse(data);
+   //       cityName = cityData.city
+   //    })
+   // })
 
    res.render("login", {
       message: message
