@@ -155,6 +155,7 @@ passport.use(new GoogleStrategy({
          console.log(userExistGoogle);
 
          if (userExist != null && userExistGoogle == null) {
+            console.log("ran1")
             message = "A user already exists with this email. Sign in via normal method"
             User.findOrCreate({
                googleId: userGoogleId,
@@ -165,6 +166,7 @@ passport.use(new GoogleStrategy({
             });
          }
          if (userExist == userExistGoogle) {
+            console.log("ran2")
             message = ""
             User.findOrCreate({
                googleId: userGoogleId,
