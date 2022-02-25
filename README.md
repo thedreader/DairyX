@@ -133,7 +133,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@ChirantanPaul1](https://twitter.com/ChirantanPaul1) - paulrivu@gmail.com
+Chirantan Paul - [@ChirantanPaul1](https://twitter.com/ChirantanPaul1) - paulrivu@gmail.com
 
 Project Link: [https://github.com/thedreader/DairyX](https://github.com/thedreader/DairyX)
 
