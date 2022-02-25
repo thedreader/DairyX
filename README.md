@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/thedreader/DairyX">
-    <img src="https://i.ibb.co/0Fnnmhp/logo.jpg" alt="Logo" width="80" height="80">
+    <img src="https://i.ibb.co/0Fnnmhp/logo.jpg" alt="Logo" width="130" height="130">
   </a>
 
 <h3 align="center">DairyX</h3>
