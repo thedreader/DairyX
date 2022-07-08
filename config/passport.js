@@ -104,7 +104,7 @@ module.exports = function (passport) {
       {
         clientID: process.env.CLIENT_ID_GOOGLE,
         clientSecret: process.env.CLIENT_SECRET_GOOGLE,
-        callbackURL: "https://dairy-x.herokuapp.com",
+        callbackURL: "https://dairy-x.herokuapp.com/auth/google/dairy",
         passReqToCallback: true,
       },
       function (request, accessToken, refreshToken, profile, done) {
