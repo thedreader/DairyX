@@ -92,7 +92,7 @@ module.exports = function (app, passport) {
       UserId.find({
             archived: false,
          },
-         function (err, userCollection) {
+         function (err, userCollection) {            
             if (err) {
                console.log(err);
             } else {
@@ -109,6 +109,8 @@ module.exports = function (app, passport) {
                      headerColor: element.headerColor,
                   });
                });
+
+               doneFinally();
             }
          }
       );
@@ -129,7 +131,7 @@ module.exports = function (app, passport) {
          });
       });
 
-      process.nextTick(() => {
+      function doneFinally() {
          res.render("dairy", {
             name: displayName,
             dairyContent: userContent,
@@ -138,7 +140,7 @@ module.exports = function (app, passport) {
             city: key_location,
             weather: key_weather,
          });
-      });
+      }
       
    });
 
@@ -154,46 +156,51 @@ module.exports = function (app, passport) {
       const entryId = req.params.entryId;
 
       UserId.findById(entryId, function (err, entryContent) {
-         setTimeout(function () {
-            try {
-               let iv = entryContent.iv;
-               const contentDecrypt = dairy().decrypt({
-                  iv: iv,
-                  content: entryContent.content,
-               });
-               res.render("entryContent", {
-                  content: contentDecrypt,
-                  date: entryContent.date,
-                  entryId: entryId,
-               });
-            } catch (err) {
-               next(err);
-            }
-         }, 100);
+         doneFinally(entryContent);
       });
+
+      function doneFinally(entryContent) {
+         try {
+            let iv = entryContent.iv;
+            const contentDecrypt = dairy().decrypt({
+               iv: iv,
+               content: entryContent.content,
+            });
+            res.render("entryContent", {
+               content: contentDecrypt,
+               date: entryContent.date,
+               entryId: entryId,
+            });
+         } catch (err) {
+            next(err);
+         }
+      }
    });
 
    app.get("/update/:entryId", function (req, res, next) {
       let entryId = req.params.entryId;
 
       UserId.findById(entryId, function (err, entryContent) {
-         setTimeout(function () {
-            try {
-               const contentStore = {
-                  iv: entryContent.iv,
-                  content: entryContent.content,
-               };
-               const contentDecrypt = dairy().decrypt(contentStore);
-               res.render("compose", {
-                  post: "Update",
-                  content: contentDecrypt,
-                  route: "update/" + entryId,
-               });
-            } catch (err) {
-               next(err);
-            }
-         }, 100);
+         doneFinally(entryContent)
       });
+
+      function doneFinally(entryContent) {
+         try {
+            const contentStore = {
+               iv: entryContent.iv,
+               content: entryContent.content,
+            };
+            const contentDecrypt = dairy().decrypt(contentStore);
+            res.render("compose", {
+               post: "Update",
+               content: contentDecrypt,
+               route: "update/" + entryId,
+            });
+         } catch (err) {
+            next(err);
+         }
+      }
+
    });
 
    app.get("/delete/:entryId", function (req, res) {
@@ -229,15 +236,14 @@ module.exports = function (app, passport) {
                      headerColor: element.headerColor,
                   });
                });
+
+               res.render("archives", {
+                  archivedUserContent: archivedUserContent,
+               });
             }
          }
       );
 
-      process.nextTick(() => {
-         res.render("archives", {
-            archivedUserContent: archivedUserContent,
-         });
-      });
    });
 
    app.get("/archived/:entryId", function (req, res) {
