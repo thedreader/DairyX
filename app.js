@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require("express");
 const mongoose = require("mongoose");
 const https = require("https");
+const flash = require("connect-flash");
 
 const session = require("express-session");
 const MongoStore = require('connect-mongo');
@@ -12,7 +13,7 @@ const findOrCreate = require('mongoose-findorcreate')
 const {
    encrypt,
    decrypt
-} = require('./crypto');
+} = require('./config/crypto');
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const {

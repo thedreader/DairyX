@@ -3,6 +3,13 @@
 <link rel="stylesheet" href="styleIndex.css">
 <link rel="stylesheet" href="mobile/mobIndex.css">
 
+<script>
+   var x= '<%=message %>'
+   if(x != "") {
+      alert(x)
+   }
+</script>
+
    <div class="container">
       <div class="design">
          <div></div>
@@ -29,10 +36,9 @@
             <form action="/" method="post" autocomplete="off">
                <input type="text" name="name" id="" placeholder="Name" class="data name" required autofocus>
                <!-- <input type="text" name="lastName" id="" placeholder="Last Name" class="data lastName" required> -->
-               <input type="email" name="username" id="" placeholder="Email" class="data email" required>
+               <input type="email" name="email" id="" placeholder="Email" class="data email" required>
                <input type="password" name="password" id="" placeholder="Password" class="data password" required>
-               <button type="submit" class="btn slide_right">Sign Up
-               </button>
+               <button type="submit" class="btn slide_right">Sign Up</button>
             </form>
 
          </div>
