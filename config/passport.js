@@ -104,7 +104,7 @@ module.exports = function (passport) {
       {
         clientID: process.env.CLIENT_ID_GOOGLE,
         clientSecret: process.env.CLIENT_SECRET_GOOGLE,
-        callbackURL: "http://localhost:3000/oauth2callback",
+        callbackURL: "https://dairy-x.herokuapp.com",
         passReqToCallback: true,
       },
       function (request, accessToken, refreshToken, profile, done) {
